@@ -1,0 +1,27 @@
+{
+    "name": "wikimedia/bcp47",
+    "description": "BCP-47 language tag utilities",
+    "keywords": ["BCP-47, i18n"],
+    "license": [
+        "BSD-3-Clause",
+        "GPL-2.0",
+        "GPL-3.0"
+    ],
+    "authors": [
+        {
+            "name": "Adam Roses Wight",
+            "email": "awight@wikimedia.org"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Bcp47\\": ""
+        },
+        "psr-0": {
+            "Goatherd_LanguageTag_": ""
+        }
+    },
+    "require": {
+        "php": ">=5.3"
+    }
+}
