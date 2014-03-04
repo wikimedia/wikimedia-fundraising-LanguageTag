@@ -93,11 +93,12 @@ class Bcp47 {
      */
     function canonicalize($raw) {
         // TODO: DI or config magic
-        UnderscoreAnomaly::preprocess($raw);
-        MediaWikiAnomalies::preprocess($raw);
+        //UnixLocale::preprocess($raw);
+        //MediaWikiLocale::preprocess($raw);
 
         $parsed = $this->parse($raw);
 
+        $canonical = array();
         if (isset($parsed['language'])) {
             $canonical[] = strtolower($parsed['language']);
         }
@@ -107,8 +108,8 @@ class Bcp47 {
         if (isset($parsed['region'])) {
             $canonical[] = strtoupper($parsed['region']);
         }
-        if (isset($parsed['variant'])) {
-            foreach ($parsed['variant'] as $subtag => $variant) {
+        if (isset($parsed['variants'])) {
+            foreach ($parsed['variants'] as $subtag => $variant) {
                 if ($subtag === $variant or is_integer($subtag)) {
                     $canonical[] = strtolower($variant);
                 } else {
@@ -141,5 +142,30 @@ class Bcp47 {
         }
 
         return implode('-', $canonical);
+    }
+}
+
+/**
+ * TODO: real dependency injection
+ */
+class PluginManager {
+    static $singleton;
+
+    protected $plugins;
+
+    static protected function get() {
+        if (!PluginManager::$singleton) {
+            PluginManager::$singleton = new PluginManager();
+        }
+        return PluginManager::$singleton;
+    }
+
+    function runHook($name, $args) {
+        foreach (PluginManager::$plugins as $plugin) {
+            $func = array($plugin, $name);
+            if (is_callable($func)) {
+                $func($args);
+            }
+        }
     }
 }
