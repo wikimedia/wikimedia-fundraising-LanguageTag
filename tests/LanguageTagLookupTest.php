@@ -3,12 +3,7 @@ namespace Bcp47;
 
 use \PHPUnit_Framework_TestCase;
 
-class TestBcp47Lookup extends PHPUnit_Framework_TestCase {
-    function setUp() {
-        parent::setUp();
-        $this->looker = new Bcp47();
-    }
-
+class LanguageTagLookupTest extends PHPUnit_Framework_TestCase {
     function testLookup() {
         $testTuples = array(
             /* (raw preferred lang priority list, array available langs, string result) */
@@ -18,7 +13,12 @@ class TestBcp47Lookup extends PHPUnit_Framework_TestCase {
         );
 
         foreach ($testTuples as $row) {
-            $this->assertSame($row[2], $this->looker->lookupBestLang($row[0], $row[1]));
+            list($preferred, $available, $expected) = $row;
+            $result = LanguageTag::lookupBestLang(
+                LanguageTag::fromRaw($preferred),
+                LanguageTag::fromRaw(implode(", ", $available))
+            )->getCanonical();
+            $this->assertSame($expected, $result);
         }
     }
 }

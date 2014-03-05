@@ -1,8 +1,8 @@
 <?php
-namespace Bcp47;
+namespace Bcp47\Modules;
 
 class UnixLocale {
-    static function preprocess(&$raw) {
+    function preprocess(&$raw) {
         $raw = str_replace('_', '-', $raw);
     }
 }

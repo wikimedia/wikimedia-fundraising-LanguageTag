@@ -2,14 +2,14 @@
 
 ## Usage
 
-    use Bcp47\Bcp47;
-    $canonicalForm = (new Bcp47)->canonicalize('zh-classical');
+    use Bcp47\LanguageTag;
+    $canonicalForm = LanguageTag::fromRaw('zh-classical')->getCanonical();
     print $canonicalForm;
     # 'lzh'
 
     $availablePageLanguages = array('zh', 'lzh');
     $browserAcceptedLanguages = array('en', 'zh-classical', 'fr');
-    $renderLanguage = (new Bcp47)->lookupBestLang($browserAcceptedLanguages, $availablePageLanguages);
+    $renderLanguage = LanguageTag::lookupBestLang($browserAcceptedLanguages, $availablePageLanguages);
     print $renderLanguage;
     # 'lzh'
 

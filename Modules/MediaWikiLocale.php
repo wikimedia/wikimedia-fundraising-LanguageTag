@@ -1,5 +1,5 @@
 <?php
-namespace Bcp47\Plugins;
+namespace Bcp47\Modules;
 
 use Bcp47;
 
@@ -97,7 +97,7 @@ class MediaWikiLocale {
         'i-mingo' => 'x-mingo?',
     );
 
-    static mediawikiSupportedLanguages = array(
+    static $mediawikiSupportedLanguages = array(
         'ab',
         'ace',
         'aeb',
@@ -469,7 +469,7 @@ class MediaWikiLocale {
         'zu',
     );
 
-    static function preprocess(&$raw) {
+    function preprocess(&$raw) {
         if (array_key_exists($raw, MediaWikiLocale::$anomalies)) {
             $raw = MediaWikiLocale::$anomalies[$raw];
         }

@@ -3,12 +3,7 @@ namespace Bcp47;
 
 use \PHPUnit_Framework_TestCase;
 
-class TestBcp47Canonicalize extends PHPUnit_Framework_TestCase {
-    function setUp() {
-        parent::setUp();
-        $this->parser = new Bcp47();
-    }
-
+class LanguageTagCanonicalizeTest extends PHPUnit_Framework_TestCase {
     function testCanonicalize() {
         $testPairs = array(
             'zh-classical' => 'lzh',
@@ -18,7 +13,8 @@ class TestBcp47Canonicalize extends PHPUnit_Framework_TestCase {
         );
 
         foreach ($testPairs as $raw => $expected) {
-            $this->assertSame($expected, $this->parser->canonicalize($raw));
+            $this->tag = LanguageTag::fromRaw($raw);
+            $this->assertSame($expected, $this->tag->getCanonical());
         }
     }
 }
