@@ -1,5 +1,5 @@
 <?php
-namespace Bcp47;
+namespace LanguageTag;
 
 use \Goatherd_LanguageTag_Parser;
 use \Locale;

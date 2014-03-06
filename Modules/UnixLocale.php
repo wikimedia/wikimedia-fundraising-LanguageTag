@@ -1,5 +1,5 @@
 <?php
-namespace Bcp47\Modules;
+namespace LanguageTag\Modules;
 
 class UnixLocale {
     function preprocess(&$raw) {

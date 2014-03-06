@@ -15,7 +15,7 @@
     ],
     "autoload": {
         "psr-4": {
-            "Bcp47\\": ""
+            "LanguageTag\\": ""
         },
         "psr-0": {
             "Goatherd_LanguageTag_": ""

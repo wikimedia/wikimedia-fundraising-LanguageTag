@@ -1,5 +1,5 @@
 <?php
-namespace Bcp47;
+namespace LanguageTag;
 
 class Configuration {
     static $singleton;
@@ -8,8 +8,8 @@ class Configuration {
      * TODO: dependency injection from external configuration
      */
     static $config = array(
-        'Bcp47\Modules\MediaWikiLocale',
-        'Bcp47\Modules\UnixLocale',
+        'LanguageTag\Modules\MediaWikiLocale',
+        'LanguageTag\Modules\UnixLocale',
     );
 
     protected $modules;

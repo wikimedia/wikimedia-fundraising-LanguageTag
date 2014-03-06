@@ -2,7 +2,8 @@
 
 ## Usage
 
-    use Bcp47\LanguageTag;
+    use LanguageTag\LanguageTag;
+
     $canonicalForm = LanguageTag::fromRaw('zh-classical')->getCanonical();
     print $canonicalForm;
     # 'lzh'

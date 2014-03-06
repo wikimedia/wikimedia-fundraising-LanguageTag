@@ -1,5 +1,5 @@
 <?php
-namespace Bcp47;
+namespace LanguageTag;
 
 use \PHPUnit_Framework_TestCase;
 

@@ -1,7 +1,7 @@
 <?php
-namespace Bcp47\Modules;
+namespace LanguageTag\Modules;
 
-use Bcp47;
+use LanguageTag\LanguageTag;
 
 /**
  * Ported from http://www.mediawiki.org/w/index.php?title=Template:BCP47&oldid=891982
@@ -476,7 +476,7 @@ class MediaWikiLocale {
     }
 
     static function getMediaWikiLanguageCode($canonical) {
-        return Bcp47::lookupBestLang($canonical, MediaWikiLocale::$mediawikiSupportedLanguages);
+        return LanguageTag::lookupBestLang($canonical, MediaWikiLocale::$mediawikiSupportedLanguages);
     }
 
     static function getMediaWikiProjectCode($locale) {
